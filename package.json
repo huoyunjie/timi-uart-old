@@ -1,0 +1,111 @@
+{
+	"name": "timi-uart",
+	"displayName": "timi-uart",
+	"description": "log from UART for Embedded system.",
+	"keywords": ["uart", "serial", "com", "trace", "log", "embedded system"],
+	"version": "0.0.13",
+	"publisher": "timi",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.timi_uart",
+		"onCommand:extension.timi_uart_select",
+		"onCommand:extension.timi_uart_open_or_close",
+		"onCommand:extension.timi_uart_test"
+	],
+	"main": "./out/extension.js",
+	"icon": "resources/timi-uart-logo.png",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.timi_uart",
+				"title": "TIMI UART"
+			},
+			{
+				"command": "extension.timi_uart_select",
+				"title": "TIMI UART: Select"
+			},
+			{
+				"command": "extension.timi_uart_open_or_close",
+				"title": "TIMI UART: Open or Close"
+			},
+			{
+				"command": "extension.timi_uart_test",
+				"title": "TIMI UART: Test"
+			}		
+		],
+        "keybindings": [
+            {
+                "command": "extension.timi_uart",
+                "key": "f1",
+                "when": "editorTextFocus"
+			},
+            {
+                "command": "extension.timi_uart_select",
+                "key": "f2",
+                "when": "editorTextFocus"
+			},
+            {
+                "command": "extension.timi_uart_open_or_close",
+                "key": "f3",
+                "when": "editorTextFocus"
+			},
+            {
+                "command": "extension.timi_uart_test",
+                "key": "f12",
+                "when": "editorTextFocus"
+			}	
+		],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "timi",
+                    "title": "TIMI",
+                    "icon": "images/beautifulGirl.svg"
+                }
+            ]
+        },
+        "views": {
+            "timi": [
+                {
+                    "id": "files",
+                    "name": "FILES"
+                },
+                {
+                    "id": "functions",
+                    "name": "FUNCTIONS"
+                },
+                {
+                    "id": "setting",
+                    "name": "SETTING"
+                }
+            ]
+        }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"electron-rebuild": "^1.8.6",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {
+		"serialport": "^7.1.5"
+	}
+}
